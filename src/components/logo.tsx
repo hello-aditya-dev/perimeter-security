@@ -7,8 +7,8 @@ export function LogoMark({ className }: { className?: string }) {
     <svg viewBox="0 0 32 32" fill="none" aria-hidden className={className}>
       <defs>
         <linearGradient id="plg" x1="4" y1="2" x2="28" y2="30" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#7aa5ff" />
-          <stop offset="1" stopColor="#38bdf8" />
+          <stop stopColor="#ff8a63" />
+          <stop offset="1" stopColor="#ff5c33" />
         </linearGradient>
       </defs>
       <path
@@ -22,7 +22,7 @@ export function LogoMark({ className }: { className?: string }) {
         fill="url(#plg)"
         opacity="0.92"
       />
-      <circle cx="16" cy="15.75" r="2.1" fill="#04060b" />
+      <circle cx="16" cy="15.75" r="2.1" fill="#07080b" />
     </svg>
   );
 }

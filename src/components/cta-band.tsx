@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ButtonLink, Container } from "@/components/ui";
+import { Reticle } from "@/components/reticle";
 import { Reveal } from "@/components/reveal";
 
 export function CtaBand({
@@ -22,8 +23,9 @@ export function CtaBand({
     <section className="border-t border-line">
       <Container className="py-16 md:py-24">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl border border-line-strong bg-surface px-6 py-14 text-center md:px-16">
-            <div aria-hidden className="bg-grid absolute inset-0 opacity-50" />
+          <div className="noise relative overflow-hidden rounded-3xl border border-line-strong bg-surface px-6 py-14 text-center md:px-16">
+            <Reticle tone="accent" className="inset-4 z-10" />
+            <div aria-hidden className="bg-dots absolute inset-0 opacity-60" />
             <div aria-hidden className="absolute -bottom-40 left-1/2 h-80 w-[560px] -translate-x-1/2 glow-accent" />
             <div className="relative">
               <h2 className="mx-auto max-w-2xl text-balance text-3xl font-semibold tracking-tight text-fg sm:text-4xl">

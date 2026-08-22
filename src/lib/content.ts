@@ -37,6 +37,7 @@ export type ArchitectureLayer = {
 
 export type CapabilityCard = {
   title: string;
+  module: string;
   href: string;
   icon: string;
   body: string;
@@ -60,6 +61,7 @@ export const COMPLIANCE_DISCLAIMER =
 export const capabilityCards: CapabilityCard[] = [
   {
     title: "Threat Detection",
+    module: "SIGHTLINE",
     href: "/solutions/threat-detection",
     icon: "radar",
     body: "Detect adversary behavior across endpoints, identities and cloud workloads in real time.",
@@ -67,6 +69,7 @@ export const capabilityCards: CapabilityCard[] = [
   },
   {
     title: "Cloud Security",
+    module: "STRATUS",
     href: "/solutions/cloud-security",
     icon: "cloud",
     body: "Continuous posture management and workload protection for multi-cloud estates.",
@@ -74,6 +77,7 @@ export const capabilityCards: CapabilityCard[] = [
   },
   {
     title: "Identity",
+    module: "GATEKEEP",
     href: "/platform",
     icon: "fingerprint",
     body: "Spot credential abuse, impossible travel and privilege escalation before they spread.",
@@ -81,6 +85,7 @@ export const capabilityCards: CapabilityCard[] = [
   },
   {
     title: "Endpoint",
+    module: "HARDPOINT",
     href: "/platform",
     icon: "laptop",
     body: "One lightweight agent replaces point tools with prevention, EDR and device posture.",
@@ -88,6 +93,7 @@ export const capabilityCards: CapabilityCard[] = [
   },
   {
     title: "Application Security",
+    module: "FOUNDRY",
     href: "/solutions/devsecops",
     icon: "code",
     body: "Shift left with code, dependency and infrastructure scanning built into the pipeline.",

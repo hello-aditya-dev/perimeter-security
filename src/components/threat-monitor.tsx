@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Reticle } from "@/components/reticle";
 import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
@@ -117,10 +118,12 @@ export function ThreatMonitor() {
       <div aria-hidden className="absolute -inset-6 rounded-[28px] bg-accent/10 blur-2xl" />
 
       <div className="relative overflow-hidden rounded-2xl border border-line-strong bg-surface shadow-2xl shadow-black/50">
+        <Reticle tone="accent" className="inset-1.5 z-20" />
+
         {/* scanline */}
         <div
           aria-hidden
-          className="scanline pointer-events-none absolute inset-x-0 z-20 h-px bg-gradient-to-r from-transparent via-accent-hi/70 to-transparent"
+          className="scanline pointer-events-none absolute inset-x-0 z-10 h-px bg-gradient-to-r from-transparent via-accent-hi/70 to-transparent"
         />
 
         {/* header */}
@@ -134,9 +137,21 @@ export function ThreatMonitor() {
               LIVE
             </span>
           </div>
-          <span className="font-mono text-xs tabular-nums text-faint">
-            {clock ?? "--:--:--"} UTC
-          </span>
+          <div className="flex items-center gap-3">
+            {/* signal bars */}
+            <span aria-hidden className="flex items-end gap-[3px]">
+              {[4, 7, 10, 13].map((h, i) => (
+                <span
+                  key={h}
+                  className={cn("w-[3px] rounded-sm", i < 3 ? "bg-accent" : "bg-line-strong")}
+                  style={{ height: h }}
+                />
+              ))}
+            </span>
+            <span className="font-mono text-xs tabular-nums text-faint">
+              {clock ?? "--:--:--"} UTC
+            </span>
+          </div>
         </div>
 
         {/* stats */}
@@ -192,7 +207,7 @@ export function ThreatMonitor() {
             System status: All systems operational
           </span>
           <span className="hidden font-mono text-[11px] text-faint sm:block">
-            demo data — replace with your telemetry
+            SOC-01 · 37.7749°N 122.4194°W
           </span>
         </div>
       </div>

@@ -1,28 +1,30 @@
 @import "tailwindcss";
 
 /*
- * Perimeter — enterprise security design system
- * Dark-first, serious, no "hacker" clichés.
+ * Perimeter — design system v2
+ * Ink black + warm bone white + signal orange.
+ * Blueprint/SOC motifs: reticles, rulers, radar sweeps, log tickers.
  */
 
 @theme {
-  --color-bg: #04060b;
-  --color-surface: #090d15;
-  --color-elevated: #0d131f;
-  --color-line: #1a2332;
-  --color-line-strong: #263248;
-  --color-fg: #e7edf6;
-  --color-muted: #93a1b5;
-  --color-faint: #64748b;
-  --color-accent: #4d7fff;
-  --color-accent-hi: #7aa5ff;
-  --color-info: #38bdf8;
+  --color-bg: #07080b;
+  --color-surface: #0b0d12;
+  --color-elevated: #10131a;
+  --color-line: #1e222b;
+  --color-line-strong: #2b303c;
+  --color-fg: #eceae3;
+  --color-muted: #9ba1ac;
+  --color-faint: #687080;
+  --color-accent: #ff5c33;
+  --color-accent-hi: #ff8a63;
+  --color-info: #59c2ff;
   --color-ok: #34d399;
-  --color-warn: #fbbf24;
-  --color-critical: #fb4b57;
+  --color-warn: #ffb224;
+  --color-critical: #ff4757;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-serif: var(--font-instrument), Georgia, serif;
 }
 
 html {
@@ -35,11 +37,20 @@ body {
 }
 
 ::selection {
-  background: rgb(77 127 255 / 0.35);
-  color: #fff;
+  background: rgb(255 92 51 / 0.85);
+  color: #0b0d12;
 }
 
 /* ---------- decorative backgrounds ---------- */
+
+.bg-dots {
+  background-image: radial-gradient(
+    circle,
+    rgb(236 234 227 / 0.055) 1px,
+    transparent 1px
+  );
+  background-size: 26px 26px;
+}
 
 .bg-grid {
   background-image:
@@ -53,11 +64,11 @@ body {
 }
 
 .glow-accent {
-  background: radial-gradient(
-    closest-side,
-    rgb(77 127 255 / 0.16),
-    transparent
-  );
+  background: radial-gradient(closest-side, rgb(255 92 51 / 0.13), transparent);
+}
+
+.glow-cool {
+  background: radial-gradient(closest-side, rgb(89 194 255 / 0.08), transparent);
 }
 
 .card-hover {
@@ -68,15 +79,53 @@ body {
     box-shadow 200ms ease;
 }
 .card-hover:hover {
-  border-color: rgb(77 127 255 / 0.45);
-  box-shadow: 0 0 0 1px rgb(77 127 255 / 0.2), 0 12px 40px -18px rgb(77 127 255 / 0.25);
+  border-color: rgb(255 92 51 / 0.55);
+  box-shadow: 0 0 0 1px rgb(255 92 51 / 0.18), 0 16px 48px -20px rgb(255 92 51 / 0.22);
 }
 
 .text-gradient {
-  background: linear-gradient(100deg, #e7edf6 20%, #7aa5ff 60%, #38bdf8 90%);
+  background: linear-gradient(100deg, #eceae3 15%, #ff8a63 60%, #ffb224 95%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(236 234 227 / 0.28);
+}
+
+/* film grain */
+.noise {
+  position: relative;
+}
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* blueprint ruler divider */
+.ruler {
+  position: relative;
+  height: 12px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgb(236 234 227 / 0.16) 0 1px,
+    transparent 1px 16px
+  );
+  mask-image: linear-gradient(to bottom, black 30%, transparent);
+}
+.ruler::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: rgb(236 234 227 / 0.12);
 }
 
 /* ---------- scroll reveal ---------- */
@@ -143,6 +192,21 @@ body {
   animation: scan-y 5.5s linear infinite;
 }
 
+/* radar sweep */
+@keyframes radar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.radar-sweep {
+  background: conic-gradient(
+    from 0deg,
+    rgb(255 92 51 / 0.22),
+    transparent 14%
+  );
+  animation: radar-spin 7s linear infinite;
+}
+
 @keyframes dash-flow {
   to {
     stroke-dashoffset: -28;
@@ -151,38 +215,6 @@ body {
 .dash-flow {
   stroke-dasharray: 6 8;
   animation: dash-flow 1.4s linear infinite;
-}
-
-@keyframes flow-dot {
-  0% {
-    offset-distance: 0%;
-    opacity: 0;
-  }
-  8% {
-    opacity: 1;
-  }
-  92% {
-    opacity: 1;
-  }
-  100% {
-    offset-distance: 100%;
-    opacity: 0;
-  }
-}
-
-@keyframes marquee-x {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee-track {
-  animation: marquee-x 36s linear infinite;
-}
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
 }
 
 @keyframes packet-y {
@@ -200,6 +232,24 @@ body {
   }
 }
 
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-x 36s linear infinite;
+}
+.marquee-fast .marquee-track {
+  animation-duration: 52s;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -213,7 +263,8 @@ body {
   .feed-item,
   .scanline,
   .dash-flow,
-  .marquee-track {
+  .marquee-track,
+  .radar-sweep {
     animation: none;
   }
 }
@@ -222,5 +273,5 @@ body {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #263248 transparent;
+  scrollbar-color: #2b303c transparent;
 }

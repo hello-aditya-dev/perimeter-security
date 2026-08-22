@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { ButtonLink, StatusDot } from "@/components/ui";
+import { UtcClock } from "@/components/utc-clock";
 import { nav } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -106,6 +107,10 @@ export function SiteHeader() {
         </div>
 
         <div className="hidden items-center gap-5 lg:flex">
+          <span className="rounded border border-line bg-surface px-1.5 py-0.5 font-mono text-[10px] text-faint">
+            v2.4.1
+          </span>
+          <UtcClock className="text-xs text-muted" />
           <Link
             href="/security#status"
             className="transition-opacity hover:opacity-80"
