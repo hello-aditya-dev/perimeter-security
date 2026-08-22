@@ -1,0 +1,7 @@
+Contact: mailto:security@example.com
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://perimeter-security.vercel.app/.well-known/security.txt
+Policy: https://perimeter-security.vercel.app/security
+
+# TEMPLATE NOTE: replace contact details with your real addresses before deploying.
